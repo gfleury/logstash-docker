@@ -4,6 +4,7 @@ ELASTIC_REGISTRY ?= docker.elastic.co
 export PATH := ./bin:./venv/bin:$(PATH)
 
 # Determine the version to build. Override by setting ELASTIC_VERSION env var.
+export GIT_BRANCH ?= 6.0
 ELASTIC_VERSION := $(shell ./bin/elastic-version)
 
 ifdef STAGING_BUILD_NUM
