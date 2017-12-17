@@ -14,9 +14,9 @@ script: make dockerfile
 after_success:
 - docker login -u $DOCKER_USER -p $DOCKER_PASS
 - export REPO=gfleury/logstash-oss
-- export TAG=`if [ "$TRAVIS_BRANCH" == "es_tsuru" ]; then echo "latest"; else echo
+- export TAG=`if [ "$TRAVIS_BRANCH" == "logstash_tsuru" ]; then echo "latest"; else echo
   $TRAVIS_BRANCH ; fi`
-- docker build -f build/logstash/Dockerfile-oss -t $REPO:$COMMIT build/elasticsearch
+- docker build -f build/logstash/Dockerfile-oss -t $REPO:$COMMIT build/logstash
 - docker tag $REPO:$COMMIT $REPO:$TAG
 - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
 - docker push $REPO
